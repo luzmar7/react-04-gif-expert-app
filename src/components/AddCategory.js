@@ -5,16 +5,17 @@ const AddCategory = ( { setCategories } ) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (e) => {
-    console.log(e.target.value)
     setInputValue(e.target.value)
+    console.log('HandleInputChange llamado')
 
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('handleSubmit', inputValue)
 
     console.log('submit hecho');
-    if (inputValue.trim().length > 2) {
+    if ( inputValue.trim().length > 2 ) {
       setCategories( cats => [inputValue, ...cats])
       setInputValue('')
     } else {
@@ -28,6 +29,7 @@ const AddCategory = ( { setCategories } ) => {
   return (
     <>
       <form onSubmit={ handleSubmit} >
+        <p>{ inputValue }</p>
         <input
           type="text"
           value={ inputValue }
